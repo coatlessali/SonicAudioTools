@@ -38,9 +38,9 @@ namespace AcbEditor
                 var extractor = new DataExtractor();
                 extractor.ProgressChanged += OnProgressChanged;
 
-                extractor.BufferSize = Settings.Default.BufferSize;
-                extractor.EnableThreading = Settings.Default.EnableThreading;
-                extractor.MaxThreads = Settings.Default.MaxThreads;
+                extractor.BufferSize = 4096;
+                extractor.EnableThreading = true;
+                extractor.MaxThreads = 4;
 
                 string baseDirectory = Path.GetDirectoryName(args[0]);
                 string outputDirectoryPath = Path.ChangeExtension(args[0], null);
@@ -172,7 +172,7 @@ namespace AcbEditor
                                 else if (extCpkArchive == null && cpkMode)
                                 {
                                     extCpkArchive = new CriCpkArchive();
-                                    extCpkArchive.Load(extAfs2ArchivePath, Settings.Default.BufferSize);
+                                    extCpkArchive.Load(extAfs2ArchivePath, 4096);
                                 }
 
                                 EntryBase afs2Entry = null;
@@ -238,7 +238,7 @@ namespace AcbEditor
                 }
 
                 CriTable acbFile = new CriTable();
-                acbFile.Load(acbPath, Settings.Default.BufferSize);
+                acbFile.Load(acbPath, 4096);
 
                 CriAfs2Archive afs2Archive = new CriAfs2Archive();
                 CriAfs2Archive extAfs2Archive = new CriAfs2Archive();
@@ -350,12 +350,12 @@ namespace AcbEditor
                     Console.WriteLine("Saving streaming AWB file...");
                     if (cpkMode)
                     {
-                        extCpkArchive.Save(awbPath, Settings.Default.BufferSize);
+                        extCpkArchive.Save(awbPath, 4096);
                     }
 
                     else
                     {
-                        extAfs2Archive.Save(awbPath, Settings.Default.BufferSize);
+                        extAfs2Archive.Save(awbPath, 4096);
 
                         if (Encoding.UTF8.GetString(streamAwbAfs2Header, 0, 4) == "@UTF")
                         {
@@ -375,7 +375,7 @@ namespace AcbEditor
                 }
 
                 acbFile.WriterSettings = CriTableWriterSettings.Adx2Settings;
-                acbFile.Save(acbPath, Settings.Default.BufferSize);
+                acbFile.Save(acbPath, 4096);
             }
 #if !DEBUG
             }

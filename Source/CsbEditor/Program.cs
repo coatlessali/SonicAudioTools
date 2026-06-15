@@ -37,9 +37,9 @@ namespace CsbEditor
                     var extractor = new DataExtractor();
                     extractor.ProgressChanged += OnProgressChanged;
 
-                    extractor.BufferSize = Settings.Default.BufferSize;
-                    extractor.EnableThreading = Settings.Default.EnableThreading;
-                    extractor.MaxThreads = Settings.Default.MaxThreads;
+                    extractor.BufferSize = 4096;
+                    extractor.EnableThreading = true;
+                    extractor.MaxThreads = 4;
 
                     string baseDirectory = Path.GetDirectoryName(args[0]);
                     string outputDirectoryName = Path.Combine(baseDirectory, Path.GetFileNameWithoutExtension(args[0]));
@@ -84,7 +84,7 @@ namespace CsbEditor
                                         else if (streaming && found && cpkArchive == null)
                                         {
                                             cpkArchive = new CriCpkArchive();
-                                            cpkArchive.Load(cpkPath, Settings.Default.BufferSize);
+                                            cpkArchive.Load(cpkPath, 4096);
                                         }
 
                                         string sdlName = sdlReader.GetString("name");
@@ -163,7 +163,7 @@ namespace CsbEditor
                     cpkArchive.ProgressChanged += OnProgressChanged;
 
                     CriTable csbFile = new CriTable();
-                    csbFile.Load(csbPath, Settings.Default.BufferSize);
+                    csbFile.Load(csbPath, 4096);
 
                     CriRow soundElementRow = csbFile.Rows.First(row => (string)row["name"] == "SOUND_ELEMENT");
 
@@ -220,7 +220,7 @@ namespace CsbEditor
                             junks.Add(entry.FilePath);
 
                             cpkArchive.Add(entry);
-                            aaxArchive.Save(entry.FilePath.FullName, Settings.Default.BufferSize);
+                            aaxArchive.Save(entry.FilePath.FullName, 4096);
                         }
 
                         else
@@ -236,7 +236,7 @@ namespace CsbEditor
                     soundElementRow["utf"] = soundElementTable.Save();
 
                     csbFile.WriterSettings = CriTableWriterSettings.AdxSettings;
-                    csbFile.Save(csbPath, Settings.Default.BufferSize);
+                    csbFile.Save(csbPath, 4096);
 
                     if (cpkArchive.Count > 0)
                     {
@@ -250,7 +250,7 @@ namespace CsbEditor
                             }
                         }
 
-                        cpkArchive.Save(cpkPath, Settings.Default.BufferSize);
+                        cpkArchive.Save(cpkPath, 4096);
                     }
 
                     foreach (FileInfo junk in junks)
