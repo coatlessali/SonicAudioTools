@@ -1,28 +1,28 @@
 # Sonic Audio Tools
 
-A set of tools to modify CRIWARE file formats.
+A set of tools to modify CRIWARE file formats. Library fork for HoneyPatcher by coatlessali.
 
-## Disclaimer
+## Changes
 
-This project is no longer maintained. I have not done any significant development for several years, and do not have any plans to do so. However, if you wish to contribute to the project, I'm open to accepting pull requests.
-
-## Releases
-
-You can get the latest development builds on the [AppVeyor page.](https://ci.appveyor.com/project/blueskythlikesclouds/sonicaudiotools/build/artifacts)  
-Stable builds are published on the [Releases page.](https://github.com/blueskythlikesclouds/SonicAudioTools/releases)
+- Removed setting console cursor position as it causes an error on Windows if not run through CMD.
+- Changed the AcbEditor and CsbEditor classes to public, and their Main() methods to AcbEdit() and CsbEdit().
 
 ## Building
 
-If you still wish to build the solution yourself, do as follows:
+Instructions are for building on Arch Linux.
 
-1. Clone from [GitHub](https://github.com/blueskythlikesclouds/SonicAudioTools.git) `git clone https://github.com/blueskythlikesclouds/SonicAudioTools.git`
-2. Open the solution in Visual Studio. (Visual Studio 2017 or later is required.)
-3. Install the missing NuGet packages.
-4. Build the solution.
+1. Install `mono` and `mono-msbuild`.
+2. Clone from [GitHub](https://github.com/coatlessali/SonicAudioTools.git) `git clone https://github.com/coatlessali/SonicAudioTools.git`
+3. `cd SonicAudioTools`
+4. `cd` into either `AcbEditor` or `CsbEditor`, depending on which one you want to build.
+5. Use `msbuild` on the `.csproj` file.
+6. Copy produced DLLs to HoneyPatcher source directory.
+
+The rest of the readme is left mostly untouched:
 
 ## Projects
 
-If you wish to see more detailed information about the projects, visit the [wiki](https://github.com/blueskythlikesclouds/SonicAudioTools/wiki) page.
+If you wish to see more detailed information about the projects, visit the upstream [wiki](https://github.com/blueskythlikesclouds/SonicAudioTools/wiki) page.
 
 ### [Sonic Audio Library](https://github.com/blueskythlikesclouds/SonicAudioTools/tree/master/Source/SonicAudioLib)
 
