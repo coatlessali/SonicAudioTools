@@ -13,9 +13,9 @@ using SonicAudioLib.Archives;
 
 namespace AcbEditor
 {
-    class Program
+    public class AcbEditorThing
     {
-        static void Main(string[] args)
+        public static void AcbEdit(string[] args)
         {
             /*if (!File.Exists(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile))
             {

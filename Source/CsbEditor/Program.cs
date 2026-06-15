@@ -17,7 +17,7 @@ namespace CsbEditor
 {
     public class CsbEditorThing
     {
-        static void CsbEdit(string[] args)
+        public static void CsbEdit(string[] args)
         {
 			/*Settings.Default.Save();
 			
