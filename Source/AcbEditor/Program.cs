@@ -17,11 +17,11 @@ namespace AcbEditor
     {
         static void Main(string[] args)
         {
-            if (!File.Exists(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile))
+            /*if (!File.Exists(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile))
             {
                 Settings.Default.Reset();
                 Settings.Default.Save();
-            }
+            }*/
 
             if (args.Length < 1)
             {
@@ -440,13 +440,13 @@ namespace AcbEditor
 
         private static void OnProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            int left = Console.CursorLeft;
-            int top = Console.CursorTop;
+            // int left = Console.CursorLeft;
+            // int top = Console.CursorTop;
 
             Console.Write(buffer);
-            Console.SetCursorPosition(left, top);
+            // Console.SetCursorPosition(left, top);
             Console.WriteLine("Progress: {0}%", e.Progress);
-            Console.SetCursorPosition(left, top);
+            // Console.SetCursorPosition(left, top);
         }
     }
 }

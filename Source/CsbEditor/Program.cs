@@ -15,18 +15,18 @@ using System.Globalization;
 
 namespace CsbEditor
 {
-    class Program
+    public class CsbEditorThing
     {
-        static void Main(string[] args)
+        static void CsbEdit(string[] args)
         {
-			Settings.Default.Save();
+			/*Settings.Default.Save();
 			
             if (args.Length < 1)
             {
                 Console.WriteLine(Resources.Description);
                 Console.ReadLine();
                 return;
-            }
+            }*/
 
 #if !DEBUG
             try
@@ -282,13 +282,13 @@ namespace CsbEditor
 
         private static void OnProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            int left = Console.CursorLeft;
-            int top = Console.CursorTop;
+           	// int left = Console.CursorLeft;
+            // int top = Console.CursorTop;
 
             Console.Write(buffer);
-            Console.SetCursorPosition(left, top);
+            // Console.SetCursorPosition(left, top);
             Console.WriteLine("Progress: {0}%", e.Progress);
-            Console.SetCursorPosition(left, top);
+            // Console.SetCursorPosition(left, top);
         }
     }
 }
